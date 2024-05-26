@@ -50,7 +50,7 @@
             } else {
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("alert('메일 인증이 되지 않았습니다. 이메일 인증 페이지로 이동합니다.')");
+                script.println("alert('메일 인증이 되지 않았습니다. 이메일 인증을 완료해 주세요.')");
                 script.println("location.href='emailSendAction.jsp'");
                 script.println("</script>");
                 script.close();

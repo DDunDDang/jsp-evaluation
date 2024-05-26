@@ -28,10 +28,10 @@
     }
     UserDAO userDAO = new UserDAO();
     int result = userDAO.join(new UserDTO(userID, userPassword, userEmail, SHA256.getSHA256(userEmail), false));
-    if (result == -1) {
+    if (result == -2) {
         PrintWriter script = response.getWriter();
         script.println("<script>");
-        script.println("alert('입력 안된 사항이 있습니다.');");
+        script.println("alert('데이터베이스 오류가 발생했습니다.');");
         script.println("history.back();");
         script.println("</script>");
         script.close();
