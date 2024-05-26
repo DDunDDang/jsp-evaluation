@@ -129,7 +129,7 @@ public class UserDAO {
             pstmt.setString(1, userID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                rs.getBoolean(1);
+                return rs.getBoolean(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
