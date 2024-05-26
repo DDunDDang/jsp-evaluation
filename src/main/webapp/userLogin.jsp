@@ -28,7 +28,6 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown">
                         <a class="dropdown-item active" href="userLogin.jsp">로그인</a>
                         <a class="dropdown-item" href="userJoin.jsp">회원가입</a>
-                        <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
                     </div>
                 </li>
             </ul>
@@ -54,6 +53,17 @@
     <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF">
         Copyright &copy; 푸터
     </footer>
+    <%
+        if (session.getAttribute("userID") != null) {
+
+    %>
+    <script>
+        alert('이미 로그인 되어 있습니다. 메인 페이지로 이동합니다.')
+        location.href='index.jsp'
+    </script>
+    <%
+        }
+    %>
     <%-- JQuery 추가하기 --%>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <%--  부트스트랩 추가하기  --%>
