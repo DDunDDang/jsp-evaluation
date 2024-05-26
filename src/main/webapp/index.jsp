@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <%-- 커스텀 CSS 추가하기 --%>
     <link rel="stylesheet" href="./css/custom.css">
+    <%
+        String userID = null;
+        if (session.getAttribute("userID") != null) {
+            userID = (String) session.getAttribute("userID");
+        }
+    %>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +32,18 @@
                         회원 관리
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown">
+                        <%
+                            if (userID == null) {
+                        %>
                         <a class="dropdown-item" href="userLogin.jsp">로그인</a>
                         <a class="dropdown-item" href="userJoin.jsp">회원가입</a>
+                        <%
+                            } else {
+                        %>
                         <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+                        <%
+                            }
+                        %>
                     </div>
                 </li>
             </ul>
