@@ -4,8 +4,6 @@
 <%@ page import="util.SHA256" %>
 <%@ page import="util.Gmail" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="javax.mail.internet.MimeMessage" %>
-<%@ page import="javax.mail.internet.InternetAddress" %>
 <%@ page import="javax.mail.*" %>
 <%@ page import="java.util.concurrent.ExecutorService" %>
 <%@ page import="java.util.concurrent.Executors" %>
@@ -56,16 +54,6 @@
 
     try {
         Authenticator auth = new Gmail();
-//        Session ses = Session.getInstance(p, auth);
-//        ses.setDebug(true);
-//        MimeMessage msg = new MimeMessage(ses);
-//        msg.setSubject(subject);
-//        Address formAddr = new InternetAddress(from);
-//        msg.setFrom(formAddr);
-//        Address toAddr = new InternetAddress(to);
-//        msg.addRecipient(Message.RecipientType.TO, toAddr);
-//        msg.setContent(content, "text/html;charset=UTF8");
-//        Transport.send(msg);
         EmailSender emailSender = new EmailSender(from, to, subject, content, p, auth);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(emailSender);
