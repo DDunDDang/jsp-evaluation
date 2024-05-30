@@ -117,6 +117,39 @@ public class EvaluationDAO {
         return -1;
     }
 
+    public int like(String evaluationID) {
+        String SQL = "UPDATE evaluation SET likeCount = likeCount + 1 WHERE evaluationID = ?";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = DatabaseUtil.getConnection();
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setInt(1, Integer.parseInt(evaluationID));
+            pstmt.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                if (pstmt != null) pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null) rs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+    }
+
     public int delete(String evaluationID) {
         String SQL = "DELETE FROM evaluation WHERE evaluationID = ?";
         Connection conn = null;
